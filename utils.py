@@ -1,8 +1,11 @@
 import numpy as np
 import torch
+import os
+from os import mkdir
+from os.path import join
 
 
-def checkpoint(model, stats, epoch, root="results", split="train"):
+def checkpoint(model, stats, epoch, arch, dataset, root="results", split="train"):
     if not os.path.isdir(root):
         mkdir(root)
     torch.save(model.state_dict, f"{root}/{arch}_{dataset}_{split}_{epoch}.pth")
